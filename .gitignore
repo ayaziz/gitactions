@@ -6,3 +6,4 @@
 /GitActions.API/obj
 /.vs
 /GitActions.API/Properties/launchSettings.json
+/GitActions.API/bin/Debug/net5.0
