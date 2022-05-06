@@ -2,10 +2,11 @@ name: .NET
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main,master ]
   pull_request:
-    branches: [ main ]
-
+    branches: [ main:,master ]
+  create:
+    branches: [main,master]
 jobs:
   build:
 
@@ -23,3 +24,5 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: clean
+      run: dotnet clean
