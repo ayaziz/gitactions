@@ -3,3 +3,6 @@
 ################################################################################
 
 /GitActions.API/bin/Debug/net6.0
+/GitActions.API/obj
+/.vs
+/GitActions.API/Properties/launchSettings.json
