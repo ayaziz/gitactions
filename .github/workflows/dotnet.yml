@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main,master ]
   pull_request:
-    branches: [ main:,master ]
+    branches: [ main,master ]
   create:
     branches: [main,master]
 jobs:
@@ -18,11 +18,12 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 5.0.x
+    - name: clean
+      run: dotnet clean
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: clean
-      run: dotnet clean
+    
