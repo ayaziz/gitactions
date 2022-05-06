@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Linq;
+using System;
 namespace GitActions.API.Controllers
 {
     [ApiController]
@@ -24,8 +27,8 @@ namespace GitActions.API.Controllers
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+                TemperatureC = new Random().Next(-20, 55),
+                Summary = Summaries[new Random().Next(Summaries.Length)]
             })
             .ToArray();
         }

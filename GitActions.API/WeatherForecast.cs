@@ -1,3 +1,4 @@
+using System;
 namespace GitActions.API
 {
     public class WeatherForecast
