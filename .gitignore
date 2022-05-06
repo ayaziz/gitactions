@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/GitActions.API/bin/Debug/net6.0
+/GitActions.API/obj
+/.vs
+/GitActions.API/Properties/launchSettings.json
