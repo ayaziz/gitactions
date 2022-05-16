@@ -1,5 +1,9 @@
 name: GitHub Actions Demo
-on: [push]
+on: 
+ push:
+ repository_dispatch:
+  types: [ test ]
+
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
