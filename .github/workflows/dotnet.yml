@@ -23,7 +23,7 @@ jobs:
        restore-keys: |
         ${{ runner.os }}-npm-cache-
     - name:  run script
-      if: ${{runner.os}} == 'Linux'
+      if: ${{ runner.os }} == 'Linux'
       run: ./.github/workflows/script.sh
       shell: bash
     - name: when windows
