@@ -16,16 +16,6 @@ jobs:
     steps:
     - name: run command
       run: ls
-    - uses: pullreminders/assignee-to-reviewer-action@v1.0.4
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Label when approved
-      uses: pullreminders/label-when-approved-action@master
-      env:
-        APPROVALS: "2"
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        ADD_LABEL: "approved"
-        REMOVE_LABEL: "awaiting%20review"
     - name: Checkout
       uses: actions/checkout@v3
     - name: Setup .NET
