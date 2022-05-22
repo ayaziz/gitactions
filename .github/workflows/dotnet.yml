@@ -12,7 +12,7 @@ jobs:
     strategy: 
       matrix: 
         os: [ubuntu-latest, windows-latest]
-        dotnet-version: [5.0.x, 6.0.x]
+        dotnet-version: [6.0.x]
     steps:
     - name:  run script
       if: ${{runners.os}} == 'ubuntu-latest'
