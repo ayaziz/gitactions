@@ -13,6 +13,13 @@ jobs:
         os: [ubuntu-latest, windows-latest]
         dotnet-version: [6.0.x]
     steps:
+    - name: Cache NPM dependencies
+      uses: actions/cache@v2
+      with:
+       path: ~/.npm
+       key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+       restore-keys: |
+        ${{ runner.os }}-npm-cache-
     - name:  run script
       if: ${{runner.os}} == 'ubuntu-latest'
       run: ./.github/workflows/script.sh
