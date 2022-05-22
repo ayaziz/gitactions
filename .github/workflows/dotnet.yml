@@ -16,7 +16,7 @@ jobs:
     - name: upload artifacts
       uses: actions/upload-artifact@v2
       with:
-       path: ./.github/workflows/script.sh
+       path: ./.github/script/main.sh
        name: script
     - name: upload artifacts
       uses: actions/download-artifact@v2
@@ -34,7 +34,7 @@ jobs:
         ${{ runner.os }}-npm-cache-
     - name:  run script
       if: ${{ runner.os }} == 'Linux'
-      run: ./.github/workflows/script.sh
+      run: ./.github/script/main.sh
       shell: bash
     - name: when windows
       if: ${{ runner.os }} == 'windows-latest'
