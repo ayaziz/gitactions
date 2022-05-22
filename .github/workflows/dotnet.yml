@@ -20,7 +20,7 @@ jobs:
       with:
        path: ./.github/script/main.sh
        name: script
-    - name: upload artifacts
+    - name: downoad artifacts
       uses: actions/download-artifact@v2
       with:
        name: script
@@ -29,7 +29,7 @@ jobs:
       run: echo ${{ runner.os }}
     - name:  run script
       if: ${{ runner.os }} == 'Linux'
-      run:  ./script/main.sh
+      run:  main.sh
       shell: bash
     - name: when windows
       if: ${{ runner.os }} == 'windows-latest'
