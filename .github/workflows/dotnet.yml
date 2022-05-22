@@ -24,7 +24,7 @@ jobs:
       uses: actions/download-artifact@v2
       with:
        name: script
-    - run: cat script.sh 
+    - run: cat main.sh 
     - name: get env name
       run: echo ${{ runner.os }}
     - name:  run script
