@@ -26,8 +26,7 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: upload artifcats
-      uses: actions/upload-artifcats@v3
+    - uses: actions/upload-artifact@main
       with:
-        name: "Upload to publish"
+        name: webpack artifacts
         path: public/
