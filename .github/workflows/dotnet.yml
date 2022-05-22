@@ -16,7 +16,7 @@ jobs:
     - name: upload artifacts
       uses: actions/upload-artifact@v2
       with:
-       file: ./.github/workflows/script.sh
+       path: ./.github/workflows/script.sh
        name: script
     - name: upload artifacts
       uses: actions/download-artifact@v2
