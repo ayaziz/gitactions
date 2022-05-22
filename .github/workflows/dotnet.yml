@@ -15,10 +15,11 @@ jobs:
         dotnet-version: [5.0.x, 6.0.x]
     steps:
     - name:  run script
-      run: script.sh
+      if: ${{runners.os}} == 'ubuntu-latest'
+      run: ./script.sh
       shell: bash
     - name: when windows
-      if: ${{matrix.os}} == 'windows-latest'
+      if: ${{runners.os}} == 'windows-latest'
       run: dir
     - name: Checkout
       uses: actions/checkout@v3
