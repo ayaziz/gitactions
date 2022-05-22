@@ -23,11 +23,11 @@ jobs:
        restore-keys: |
         ${{ runner.os }}-npm-cache-
     - name:  run script
-      if: ${{runner.os}} == 'ubuntu-latest'
+      if: ${{runner.os}} == 'Linux'
       run: ./.github/workflows/script.sh
       shell: bash
     - name: when windows
-      if: ${{runner.os}} == 'windows-latest'
+      if: ${{ runner.os }} == 'windows-latest'
       run: dir
     - name: Checkout
       uses: actions/checkout@v3
