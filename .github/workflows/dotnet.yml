@@ -1,5 +1,4 @@
 name: .NET
-
 on:
   push:
     branches: [ main ]
@@ -15,11 +14,11 @@ jobs:
         dotnet-version: [6.0.x]
     steps:
     - name:  run script
-      if: ${{runners.os}} == 'ubuntu-latest'
+      if: ${{runner.os}} == 'ubuntu-latest'
       run: ./script.sh
       shell: bash
     - name: when windows
-      if: ${{runners.os}} == 'windows-latest'
+      if: ${{runner.os}} == 'windows-latest'
       run: dir
     - name: Checkout
       uses: actions/checkout@v3
@@ -33,6 +32,6 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: dotonet publish
+    - name: dotnet publish
       run: dotnet publish
     
