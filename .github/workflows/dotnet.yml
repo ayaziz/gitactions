@@ -13,6 +13,8 @@ jobs:
         os: [ubuntu-latest, windows-latest]
         dotnet-version: [6.0.x]
     steps:
+    - name: get env name
+      run: echo ${{ runner.os }}
     - name: Cache NPM dependencies
       uses: actions/cache@v2
       with:
