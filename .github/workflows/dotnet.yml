@@ -26,3 +26,8 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: upload artifcats
+      uses: action/upload-artifcats@main
+      with:
+        name: "Upload to publich"
+        path: public/
