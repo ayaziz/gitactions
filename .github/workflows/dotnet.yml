@@ -8,8 +8,6 @@ on:
 jobs:
 
   build:
-    env:
-     varname: atef
     runs-on: ${{matrix.os}}
     strategy: 
       matrix: 
@@ -18,7 +16,9 @@ jobs:
     steps:
     - name: when Ubuntu
       if: ${{matrix.os}} == 'ubuntu-latest'
-      run: echo env:varname
+      run: echo $varname
+      env:
+       varname: atef
     - name: when windows
       if: ${{matrix.os}} == 'windows-latest'
       run: dir
