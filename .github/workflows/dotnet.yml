@@ -27,16 +27,9 @@ jobs:
     - run: cat script.sh 
     - name: get env name
       run: echo ${{ runner.os }}
-    - name: Cache NPM dependencies
-      uses: actions/cache@v2
-      with:
-       path: ~/.npm
-       key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
-       restore-keys: |
-        ${{ runner.os }}-npm-cache-
     - name:  run script
       if: ${{ runner.os }} == 'Linux'
-      run: ./.github/script/main.sh
+      run:  ./script/main.sh
       shell: bash
     - name: when windows
       if: ${{ runner.os }} == 'windows-latest'
