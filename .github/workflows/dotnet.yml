@@ -13,6 +13,8 @@ jobs:
         os: [ubuntu-latest, windows-latest]
         dotnet-version: [6.0.x]
     steps:
+    - name: Checkout
+      uses: actions/checkout@v3
     - name: upload artifacts
       uses: actions/upload-artifact@v2
       with:
@@ -39,8 +41,6 @@ jobs:
     - name: when windows
       if: ${{ runner.os }} == 'windows-latest'
       run: dir
-    - name: Checkout
-      uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
