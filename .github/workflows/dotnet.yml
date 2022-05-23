@@ -28,7 +28,7 @@ jobs:
     - name: dotnet test
       run: dotnet test
   publish:
-    need: build
+    needs: build
     runs-on: ${{matrix.os}}
     strategy: 
       matrix: 
