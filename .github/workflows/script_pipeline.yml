@@ -9,6 +9,12 @@ jobs:
      matrix:
       os: ["ubuntu-latest", "windows-latest"]
    steps:
-     - name: print secret
-       run: echo  ${{secrets.GITHUB_TOKEN}}
-        
+     - uses: actions/github_script@0.8.0
+       with:
+         github-token: ${{secrets.GITHUB_TOKEN}}
+         script: |
+                  github.issues.createComment({
+                          issue_number: context.issue.number,
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                  });
