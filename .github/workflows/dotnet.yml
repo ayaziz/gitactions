@@ -10,32 +10,13 @@ jobs:
     runs-on: ${{matrix.os}}
     strategy: 
       matrix: 
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest]
         dotnet-version: [6.0.x]
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
-    - name: upload artifacts
-      uses: actions/upload-artifact@v2
-      with:
-       path: ./.github/script/main.sh
-       name: script
-    - name: downoad artifacts
-      uses: actions/download-artifact@v2
-      with:
-       name: script
-    - run: cat main.sh 
-    - name: get env name
-      run: echo ${{ runner.os }}
-    - name:  run script
-      if: ${{ runner.os }} == 'Linux'
-      run:  main.sh
-      shell: bash
-    - name: when windows
-      if: ${{ runner.os }} == 'windows-latest'
-      run: dir
+      uses: actions/checkout@main
     - name: Setup .NET
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-dotnet@main
       with:
         dotnet-version:  ${{matrix.dotnet-version}}
     - name: Restore dependencies
@@ -44,6 +25,26 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: dotnet publish
-      run: dotnet publish
-    
+    - name: dotnet test
+      run: dotnet test
+  publish:
+    need: build
+    runs-on: ${{matrix.os}}
+    strategy: 
+      matrix: 
+        os: [ubuntu-latest]
+        dotnet-version: [6.0.x]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@main
+
+      - name: Setup .Net
+        uses: actions/setup-dotnet@main
+
+      - name: Nuget Package And Upload
+        uses: csharp-opensource/publish-nuget@master
+        with:
+          releaseVersion: ${{ github.event.release.tag_name }}
+          repoUrl: ${{ github.server_url }}/${{ github.repository }}
+          nugetToken: ${{ secrets.NUGET_AUTH_TOKEN }}
+          nugetSource: https://api.nuget.org/v3/index.json
