@@ -10,6 +10,8 @@ jobs:
       os: ["ubuntu-latest", "windows-latest"]
    if: contains(${{runner.os}},'Linux'')
    steps:
+     - name: print secret
+     - run: echo  ${{secrets.GITHUB_TOKEN}}
      - uses: actions/github-script@0.8.0
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
