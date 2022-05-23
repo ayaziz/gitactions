@@ -1,14 +1,13 @@
 name: write comments
-on: 
- issues: 
-  types: [opened ]
+on:
+  issues:
+    types: [opened]
 jobs:
   comment_issue:
    runs-on: ${{matrix.os}}
    strategy:
      matrix:
       os: ["ubuntu-latest", "windows-latest"]
-   if: contains(${{runner.os}},'Linux'')
    steps:
      - name: print secret
      - run: echo  ${{secrets.GITHUB_TOKEN}}
