@@ -2,6 +2,10 @@ name: write comments
 on:
   issues:
     types: [opened, closed]
+permissions: 
+  actions: write
+  issues: write
+  statuses: write
 jobs:
   comment_issue:
    runs-on: ${{matrix.os}}
