@@ -1,0 +1,22 @@
+name: write comments
+on: 
+ issues: 
+  types: [opened ]
+jobs:
+  comment_issue:
+   runs-on: ${{matrix.os}}
+   strategy:
+     matrix:
+      os: ["ubuntu-latest", "windows-latest"]
+   if: contains(${{runner.os}},'Linux'')
+   steps:
+     - uses: actions/github_script@0.8.0
+       with:
+         github-token: ${{secrets.GITHUB_TOKEN}}
+         script: |
+                  github.issues.createComment({
+                          issue_number: context.issue.number,
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                  });
+        
