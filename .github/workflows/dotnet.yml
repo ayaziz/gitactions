@@ -37,10 +37,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@main
-
+      - name: run file
+        run: echo ${{ github.server_url }}/${{ github.repository }}
       - name: Setup .Net
         uses: actions/setup-dotnet@main
-
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore
+      - name: Build
+        run: dotnet publish
       - name: Nuget Package And Upload
         uses: csharp-opensource/publish-nuget@master
         with:
